@@ -1,9 +1,9 @@
-import { HomePage } from "./modules/pages/HomePage";
+import { ProfilePage } from "./modules/pages/ProfilePage";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <ProfilePage />
     </>
   );
 }
