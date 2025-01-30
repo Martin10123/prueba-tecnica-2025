@@ -1,9 +1,9 @@
-import { RegisterPage } from "./modules/auth/RegisterPage";
+import { HomePage } from "./modules/pages/HomePage";
 
 function App() {
   return (
     <>
-      <RegisterPage />
+      <HomePage />
     </>
   );
 }
