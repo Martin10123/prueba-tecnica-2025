@@ -16,7 +16,7 @@ export const RegisterPage = () => {
       titleRegisterLogin="Ingresar"
       img="/assets/register-img.svg"
     >
-      <form className="grid gap-4" onSubmit={handleSubmit}>
+      <form className="grid gap-2" onSubmit={handleSubmit}>
         <div>
           <label className="block text-base font-medium mb-2" htmlFor="name">
             Nombre
