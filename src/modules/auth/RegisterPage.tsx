@@ -14,6 +14,7 @@ export const RegisterPage = () => {
     <AuthLayout
       title="Registrarse"
       titleRegisterLogin="Ingresar"
+      linkRegisterLogin="/auth/login"
       img="/assets/register-img.svg"
     >
       <form className="grid gap-2" onSubmit={handleSubmit}>

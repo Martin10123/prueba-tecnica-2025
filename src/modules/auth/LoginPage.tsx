@@ -13,6 +13,7 @@ export const LoginPage = () => {
     <AuthLayout
       title="Iniciar sesión"
       titleRegisterLogin="Regístrate"
+      linkRegisterLogin="/auth/register"
       img="/assets/login-img.svg"
     >
       <form className="grid gap-4" onSubmit={handleSubmit}>

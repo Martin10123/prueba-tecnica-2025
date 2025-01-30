@@ -1,10 +1,11 @@
-import { ProfilePage } from "./modules/pages/ProfilePage";
+import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./router/AppRouter";
 
 function App() {
   return (
-    <>
-      <ProfilePage />
-    </>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 

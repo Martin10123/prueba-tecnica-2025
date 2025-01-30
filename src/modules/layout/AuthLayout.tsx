@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 interface AuthLayoutProps {
   children: React.ReactNode | React.ReactNode[];
   title: string;
   titleRegisterLogin: string;
-  linkRegisterLogin?: string;
+  linkRegisterLogin: string;
   img: string;
 }
 
@@ -23,7 +25,10 @@ export const AuthLayout = ({
         {children}
 
         <div>
-          <p className="mt-4 text-sm text-black font-medium flex flex-col items-end">
+          <Link
+            className="mt-4 text-sm text-black font-medium flex flex-col items-end"
+            to={linkRegisterLogin}
+          >
             {title === "Iniciar sesión"
               ? "¿No tienes una cuenta? "
               : "¿Ya tienes una cuenta?"}
@@ -31,7 +36,7 @@ export const AuthLayout = ({
             <span className="font-semibold text-base text-blue-500 cursor-pointer hover:underline duration-100">
               {titleRegisterLogin}
             </span>
-          </p>
+          </Link>
         </div>
       </div>
 

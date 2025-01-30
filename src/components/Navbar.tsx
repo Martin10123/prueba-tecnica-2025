@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IoMenuOutline } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -35,18 +36,35 @@ export const Navbar = () => {
             </button>
           </div>
         </div>
+
         <div
           className={`overflow-hidden transition-all duration-300 basis-full grow
             ${openDropdown ? "block" : "hidden sm:block"}
             `}
         >
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-            <button className="font-medium text-blue-500 focus:outline-none">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `font-medium text-center focus:outline-none ${
+                  isActive ? "text-blue-600" : "text-gray-500"
+                }`
+              }
+            >
               Inicio
-            </button>
-            <button className="font-medium text-gray-500 focus:outline-none">
+            </NavLink>
+
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `font-medium text-center focus:outline-none ${
+                  isActive ? "text-blue-600" : "text-gray-500"
+                }`
+              }
+            >
               Perfil
-            </button>
+            </NavLink>
+
             <button className="font-medium text-red-500 hover:text-red-600 focus:outline-none focus:text-red-400 dark:text-red-400 dark:hover:text-red-500 dark:focus:text-red-500">
               Cerrar sesión
             </button>
