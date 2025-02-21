@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+# User, Product, and Invoice Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a web application designed for managing users, products, and invoices. It follows best coding practices, including SOLID principles, design patterns, and Clean Code methodologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **Backend:** Node.js (RESTful API)
+- **Frontend:** React
+- **Database:** MongoDB
+- **Deployment:** Cloud service Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+### Entity Management (CRUD Operations)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### Users
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Fields: `id`, `name`, `email`, `password`, `role (admin/user)`
+- **Admin:** Can create, update, and delete users.
+- **User:** Can update their own profile.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### Products
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Fields: `id`, `name`, `description`, `price`, `stock`, `status (active/inactive)`
+- **Admin:** Can create and update products, including stock.
+- **Users:** Can only view product details.
+- **Validation:** Purchases cannot proceed if stock is insufficient.
+
+#### Invoices
+
+- Fields: `id`, `user_id`, `products (list of purchased products and quantities)`, `total`, `date`
+- **Users:** Can generate invoices when making purchases.
+- **Admin:** Can retrieve invoice details by ID.
+
+### Endpoints and Business Logic
+
+- **Users:** Registration and authentication (JWT) with role-based access.
+- **Products:**
+  - Only admins can add new products.
+  - Stock updates must not result in negative values.
+- **Invoices:**
+  - Only users can generate invoices.
+  - Stock availability must be verified before processing a purchase.
+- **Analytics:** Endpoint to check the number of purchases a user made in the last month.
+
+### Security and Access Control
+
+- **Authentication:** JSON Web Token (JWT) for user validation.
+- **Authorization:** Role-based access control.
+- **Restrictions:** Only users can make purchases, while admins manage users and products.
+
+## Setup and Installation
+
+### Prerequisites
+
+- Node.js & npm installed
+- MongoDB database setup
+- React - vite
